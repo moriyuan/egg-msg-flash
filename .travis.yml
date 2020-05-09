@@ -29,5 +29,6 @@ jobs:
         provider: npm
         email: moriyuan@techfin.ai
         skip_cleanup: true
+        api_key: '$NPM_TOKEN'
         on:
           branch: master
