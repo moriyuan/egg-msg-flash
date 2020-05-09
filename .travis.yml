@@ -23,7 +23,6 @@ jobs:
       script:
         - echo "npm Deploy Started"
         - npm --version
-        - npm run build
         - echo "npm Build Finished"
 
       deploy:
