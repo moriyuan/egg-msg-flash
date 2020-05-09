@@ -1,0 +1,35 @@
+language: node_js
+node_js:
+  - '12'
+  - '10'
+  - '9'
+install:
+  - npm install
+
+stages:
+  - name: deploy
+
+jobs:
+  include:
+    - stage: test
+      script:
+        - node --version
+        - npm --version
+        - echo "Test Started..."
+        - npm test
+        - echo "Test Finished"
+
+    - stage: deploy
+      script:
+        - echo "npm Deploy Started"
+        - npm --version
+        - npm run build
+        - echo "npm Build Finished"
+
+      deploy:
+        provider: npm
+        email: moriyuan@techfin.ai
+        api_key: '$NPM_TOKEN'
+        skip_cleanup: true
+        on:
+          branch: master
